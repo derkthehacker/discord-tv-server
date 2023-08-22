@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.template import loader
 from game_queue import game_queue
 import requests as req
-import asyncio, re
+import asyncio, re, os
 
 """
 'https://youtube.googleapis.com/youtube/v3/videos?part=contentDetails&id=Ks-_Mh1QhMc&key=[YOUR_API_KEY]' \
@@ -37,7 +37,7 @@ def getSeconds(time):
     return(total_time)
 
 def get_duration(game):
-    api_token = 'AIzaSyA9zDgDZkv7h7gh60AQeAAJG3pvm9Q9ZmA'
+    api_token = os.env('YouTube_API')
     url = 'https://youtube.googleapis.com/youtube/v3/videos?part=contentDetails&id={id}&key={key}'.format(id=game, key = api_token)
     response = req.get(url=url)
     resp = response.json()
