@@ -39,7 +39,6 @@ def getSeconds(time):
 def get_duration(game):
     api_token = 'AIzaSyA9zDgDZkv7h7gh60AQeAAJG3pvm9Q9ZmA'
     url = 'https://youtube.googleapis.com/youtube/v3/videos?part=contentDetails&id={id}&key={key}'.format(id=game, key = api_token)
-    #url = 'https://youtube.googleapis.com/youtube/v3/videos?part=contentDetails&id=c3L0fbtftRY&key=AIzaSyA9zDgDZkv7h7gh60AQeAAJG3pvm9Q9ZmA'
     response = req.get(url=url)
     resp = response.json()
     duration = resp['items'][0]['contentDetails']['duration']
